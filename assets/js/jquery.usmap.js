@@ -1,6 +1,10 @@
 /**
  *  Taken mostly from:
  *  https://codepen.io/JimPixel/pen/zBEvgm
+ *
+ *  More data found at:
+ *  https://code.highcharts.com/mapdata/
+ *  https://code.highcharts.com/mapdata/custom/usa-and-canada.svg
  */
 
 
