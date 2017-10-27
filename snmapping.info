@@ -1,0 +1,14 @@
+; $Id$
+name = snmapping
+description = Custom Mapping Integration
+package = Straight North
+core = 7.x
+
+scripts[] = assets/js/snmapping.js
+scripts[] = assets/js/states_map.js
+scripts[] = assets/js/raphael.js
+scripts[] = assets/js/color.jquery.js
+scripts[] = assets/js/jquery.usmap.js
+
+stylesheets[all][] = assets/css/snmapping.css
+

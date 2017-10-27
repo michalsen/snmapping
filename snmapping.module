@@ -1,0 +1,68 @@
+<?php
+/**
+ * @file
+ * SN Mapping Page
+ */
+
+
+/**
+ *  implements hook_menu()
+ *  This is to create the AJAX page for the map dropdowns
+ */
+function snmapping_menu() {
+  $items = array();
+  $items['admin/snmapping'] = array(
+    'title' => 'SN Mapping',
+    'page callback' => 'sn_mapping',
+    'access arguments' => array('access sn_mapping content'),
+    'description' => 'SN Mapping',
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+    );
+  return $items;
+}
+
+
+/**
+ *  sn_mapping()
+ *  This creates the AJAX response to the dropdown selection
+ */
+function sn_mapping() {
+
+  $node = node_load($_POST['nid']);
+
+  if (is_object($node)) {
+    print $node->title . '<br>';
+    print $node->field_service_contact['und'][0]['value'] . '<br>';
+    print $node->field_service_phone['und'][0]['value'] . '<br>';
+    print $node->field_service_email['und'][0]['value'] . '<br>';
+    print $node->field_service_website['und'][0]['value'] . '<br>';
+  }
+
+}
+
+
+/**
+ *  CTOOLS Panel
+ */
+function snmapping_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools' && $plugin_type == 'content_types') {
+    return 'plugins/' . $plugin_type;
+  }
+}
+
+/*
+ * Implements hook_form_alter
+ *
+ */
+function snmapping_form_alter(&$form, &$form_state, $form_id) {
+  if($form_id = 'better_jump_menu') {
+    if ($form['#form_id'] != 'views_ui_edit_form') {
+      unset($form['#attached']);
+    }
+  }
+  // dpm($form);
+}
+
+
+
