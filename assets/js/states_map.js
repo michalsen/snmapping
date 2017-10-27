@@ -6,20 +6,20 @@
       'stateStyles': {
         fill: "#ffffff",
         stroke: "ffffff",
-        "stroke-width": 2,
+        "stroke-width": 1,
         "stroke-linejoin": "round",
         scale: [1, 1]
       },
       'stateHoverStyles': {
         fill: "#96ce92",
-        stroke: "#96ce92",
+        stroke: "#ffffff",
         scale: [1.1, 1.1]
       },
 
       'labelBackingStyles': {
         fill: "#96ce92",
-        stroke: "#96ce92",
-        "stroke-width": 2,
+        stroke: "#ffffff",
+        "stroke-width": 1,
         "stroke-linejoin": "round",
         scale: [1, 1]
       },
@@ -35,11 +35,19 @@
       },
 
     'click' : function(event, data) {
-      if ( data.name == "Puerto Rico" ) {
-        data.name = 'PR';
-      }
+      var state = data.name;
 
-      $('#state-info').load('admin/states_map?state='+data.name+' #state-details');
+        var sendData = jQuery.ajax({
+                   type: 'POST',
+                   url: '/admin/snmapping',
+                   data: {state},
+                     success: function(resultData) {
+                         jQuery('.pane-snmapping').html("<div id='state-info'>"+resultData+"</div>");
+                     }
+        });
+
+
+      //$('#state-info').load('admin/states_map?state='+data.name+' #state-details');
          //$('#state-info')
           //.text(data.name)
           //.stop()
