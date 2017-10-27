@@ -1,3 +1,10 @@
+/**
+ *  Taken mostly from:
+ *  https://codepen.io/JimPixel/pen/zBEvgm
+ */
+
+
+
 (function($, document, window, Raphael, undefined) {
   // jQuery Plugin Factory
   function jQueryPluginFactory( $, name, methods, getters ){
