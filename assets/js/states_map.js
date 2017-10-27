@@ -36,6 +36,7 @@
 
     'click' : function(event, data) {
       var state = data.name;
+      console.log(state);
 
         var sendData = jQuery.ajax({
                    type: 'POST',
